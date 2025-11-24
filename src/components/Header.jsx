@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import movieplex from '../assets/movieplex.png'
 import './style.css'
 

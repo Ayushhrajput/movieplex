@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Header from './Header';
+import { useEffect, useState } from 'react';
 import './style.css'
 
 function Home(props) {

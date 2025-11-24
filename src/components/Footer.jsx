@@ -1,5 +1,4 @@
-import React from 'react';
-import movieplex from '../assets/movieplex.png'
+
 
 function Footer(props) {
     return (
