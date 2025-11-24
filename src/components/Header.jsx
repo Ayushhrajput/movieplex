@@ -22,7 +22,7 @@ function Header({className}) {
         <div className={className}>
             <div className={`header ${isSticky? 'sticky': ''} flex text-white h-14 w-full justify-between`}>
                 <div className='flex items-center w-full'>
-                    <img src={movieplex} alt="" className='h-full' />
+                    <img src={movieplex} alt="" className='max-w-20 lg:max-w-40' />
                     <div
                     onClick={() => 
                         setBrowse((prev) => (!prev))
@@ -31,7 +31,7 @@ function Header({className}) {
                         <span>Browse</span>
                         <i className={`${browse? 'rotate-180':''} fa-solid fa-caret-down`}></i>
                     </div>
-                    <div className={`lg:hidden ${browse? 'inline-flex':'hidden'} backdrop-blur-2xl  bg-black/10 absolute top-16 left-28 w-40 flex justify-center rounded`}>
+                    <div className={`lg:hidden ${browse? 'inline-flex':'hidden'} backdrop-blur-2xl  bg-black/10 absolute top-16 left-10 w-40 flex justify-center rounded`}>
                         <ul className='flex flex-col gap-4 py-4'>
                             <li>Content</li>
                             <li>Movies</li>
@@ -56,7 +56,7 @@ function Header({className}) {
                         </i>
                         <input type="text" 
                             placeholder='title, category'
-                            className={`outline-none px-2 ${(showInput)? 'w-40 lg:w-60': 'w-0'} transition-all duration-100 `}
+                            className={`outline-none px-2 ${(showInput)? 'w-20 lg:w-60': 'w-0'} transition-all duration-100 `}
                         />
                     </div>
                 </div>
