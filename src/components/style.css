@@ -1,0 +1,11 @@
+.header {
+    background: transparent;
+    position: sticky;
+    top: 0;
+}
+.header.sticky {
+    background: black !important;
+}
+li {
+    cursor: pointer;
+}
