@@ -53,7 +53,7 @@ function Home(props) {
                         </form>
                     </div>
                 </div>
-                <div className='bg-black/90 min-h-screen '>
+                <div className='bg-black/90 max-h-min '>
                     <div className='py-2 flex flex-col gap-2'>
                         {(showMovie) && (<div className='px-4 text-white text-xl'><span>Search Results</span></div>)}
                         <div className='flex gap-2 px-4 overflow-x-auto scrollbar-hide'>
