@@ -11,7 +11,7 @@ function Home(props) {
     
     const apiKey = 'ab383f7bf77b1505d74c59971cedba53'
     
-
+    
     const searchMovie = (prop) => {
         setSearch(prop)
     }
