@@ -21,7 +21,7 @@ function Header({className}) {
         <div className={className}>
             <div className={`header ${isSticky? 'sticky': ''} flex text-white h-14 w-full justify-between`}>
                 <div className='flex items-center w-full'>
-                    <div className=' text-red-600 text-2xl px-4 cursor-pointer'>MoviePlex</div>
+                    <div className=' text-red-600 text-xl lg:text-2xl px-4 cursor-pointer'>MoviePlex</div>
                     <div
                     onClick={() => 
                         setBrowse((prev) => (!prev))
