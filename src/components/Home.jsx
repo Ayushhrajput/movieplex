@@ -8,7 +8,8 @@ function Home(props) {
     const [searchData, setSearchData] = useState([])
     const [showMovie, setShowMovie] = useState(false)
     
-
+    
+    const apiKey = 'ab383f7bf77b1505d74c59971cedba53'
     
 
     const searchMovie = (prop) => {
@@ -16,16 +17,16 @@ function Home(props) {
     }
 
     useEffect(()=>{
-        fetch('https://www.omdbapi.com/?s=mission impossible&apikey=61c5cb5b')
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=mission impossible&language=en-US&page=1`)
         .then((res) => res.json()).then((data) => {
-            setMovies(data.Search)
+            setMovies(data.results)
         })
     },[])
 
     useEffect(() => {
-        fetch(`https://www.omdbapi.com/?s=${search}&apikey=61c5cb5b`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}&language=en-US&page=1`)
         .then((res) => (res.json().then((Data) => {
-            setSearchData(Data.Search || [])
+            setSearchData(Data.results || [])
         })))
     },[showMovie])
 
@@ -59,8 +60,8 @@ function Home(props) {
                             
                             {
                             searchData.map((movie, index) => (
-                                (<div key={`${movie.imdbID}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
-                                    {movie.Title}
+                                (<div key={`${movie.id}`} className='relative'><img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="" className='min-w-40 lg:min-w-60 min-h-60 lg:min-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
+                                    {movie.title}
                                 </p></div>)
                             ))}
                         </div>
@@ -72,9 +73,9 @@ function Home(props) {
                         <div className=' overflow-x-auto flex items-center scrollbar-hide'>
                             <div className='flex gap-2 px-4'>
                             {movies.map((movie, index) => (
-                            (<div key={`${movie.imdbID}-${index}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
+                            (<div key={`${movie.id}-${index}`} className='relative'><img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
                                 <p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100   font-semibold text-white">
-                                    {movie.Title}
+                                    {movie.title}
                                 </p>
                             </div>)
                             ))}

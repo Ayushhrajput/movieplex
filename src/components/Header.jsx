@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import movieplex from '../assets/movieplex.png'
 import './style.css'
 
 function Header({className}) {
@@ -22,7 +21,7 @@ function Header({className}) {
         <div className={className}>
             <div className={`header ${isSticky? 'sticky': ''} flex text-white h-14 w-full justify-between`}>
                 <div className='flex items-center w-full'>
-                    <img src={movieplex} alt="" className='max-w-20 lg:max-w-40' />
+                    <div className=' text-red-600 text-2xl px-4 '>MoviePlex</div>
                     <div
                     onClick={() => 
                         setBrowse((prev) => (!prev))
