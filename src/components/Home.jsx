@@ -17,16 +17,16 @@ function Home(props) {
     }
 
     useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=mission impossible&language=en-US&page=1`)
+        fetch('https://www.omdbapi.com/?s=mission impossible&apikey=61c5cb5b')
         .then((res) => res.json()).then((data) => {
-            setMovies(data.results)
+            setMovies(data.Search)
         })
     },[])
 
     useEffect(() => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}&language=en-US&page=1`)
+        fetch(`https://www.omdbapi.com/?s=${search}&apikey=61c5cb5b`)
         .then((res) => (res.json().then((Data) => {
-            setSearchData(Data.results || [])
+            setSearchData(Data.Search || [])
         })))
     },[showMovie])
 
@@ -60,8 +60,8 @@ function Home(props) {
                             
                             {
                             searchData.map((movie, index) => (
-                                (<div key={`${movie.id}`} className='relative'><img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="" className='min-w-40 lg:min-w-60 min-h-60 lg:min-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
-                                    {movie.title}
+                                (<div key={`${movie.OMDBid}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 min-h-60 lg:min-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
+                                    {movie.Title}
                                 </p></div>)
                             ))}
                         </div>
@@ -73,9 +73,9 @@ function Home(props) {
                         <div className=' overflow-x-auto flex items-center scrollbar-hide'>
                             <div className='flex gap-2 px-4'>
                             {movies.map((movie, index) => (
-                            (<div key={`${movie.id}-${index}`} className='relative'><img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
+                            (<div key={`${movie.OMDBid}-${index}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
                                 <p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100   font-semibold text-white">
-                                    {movie.title}
+                                    {movie.Title}
                                 </p>
                             </div>)
                             ))}
