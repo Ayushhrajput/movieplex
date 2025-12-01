@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './style.css'
+import { Link, NavLink } from 'react-router-dom';
 
 function Header({className}) {
 
@@ -23,8 +24,10 @@ function Header({className}) {
                 <div className='flex items-center w-full'>
                     <div className=' text-red-600 text-xl lg:text-2xl px-4 cursor-pointer font-bold'>MoviePlex</div>
                     <div
-                    onClick={() => 
+                    onClick={() => (
                         setBrowse((prev) => (!prev))
+                        
+                    )
                     }
                     className='flex items-center outline cursor-pointer lg:hidden'>
                         <span>Browse</span>
@@ -32,32 +35,17 @@ function Header({className}) {
                     </div>
                     <div className={`lg:hidden ${browse? 'inline-flex':'hidden'} backdrop-blur-2xl  bg-black/10 absolute top-16 left-10 w-40 flex justify-center rounded`}>
                         <ul className='flex flex-col gap-4 py-4'>
-                            <li>Content</li>
-                            <li>Movies</li>
-                            <li>Popular</li>
-                            <li>My list</li>
+                            <Link to='/'><li>Movies</li></Link>
+                            <Link to='/favourites'><li>Favourites</li></Link>
                         </ul>
                     </div>
                     <ul className=' w-lg justify-center hidden lg:inline-flex gap-10'>
-                        <li>Content</li>
-                        <li>Movies</li>
-                        <li>Popular</li>
-                        <li>My list</li>
+                        <NavLink to='/'><li>Movies</li></NavLink>
+                        <NavLink to='/favourites'><li>Favourites</li></NavLink>
                     </ul>
                 </div>
                 <div className='w-lg flex justify-end '>
-                    <div className={`flex items-center ${showInput? 'outline': 'outline-0'} my-4`}>
-                        <i class="fa-solid text-white fa-magnifying-glass "
-                            onClick={() => {
-                                setShowInput((prev) => (!prev))
-                            }}
-                        >
-                        </i>
-                        <input type="text" 
-                            placeholder='title, category'
-                            className={`outline-none px-2 ${(showInput)? 'w-20 lg:w-60': 'w-0'} transition-all duration-100 `}
-                        />
-                    </div>
+                    
                 </div>
                 <div className='flex items-center mx-4 lg:mx-10'>
                     <i class="fa-solid text-white fa-user"></i>

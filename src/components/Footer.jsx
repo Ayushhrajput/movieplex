@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 
 
 function Footer(props) {
@@ -8,22 +9,20 @@ function Footer(props) {
                     
                     <div>
                         <ul className='flex flex-col gap-4'>
-                            <li>Content</li>
-                            <li>Movies</li>
-                            <li>Recommendations</li>
-                            <li>My list</li>
+                            <NavLink to='/'><li>Movies</li></NavLink>
+                            <NavLink to='/favourites'><li>Favourites</li></NavLink>
                         </ul>
                     </div>
                     <div>
-                        <ul className='flex flex-col'>
-                            <li>Github</li>
-                        </ul>
+                        <div className='flex flex-col'>
+                            <a href="https://github.com/Ayushhrajput">Github</a>
+                        </div>
                     </div>
                 </div>
                 <div className='px-4 text-gray-400'>
                     <h1>© 2025 MoviePlex</h1>
-                    <p>Built using - React • Tailwind CSS • JavaScript • Firebase</p>
-                    <p>Movie data provided by OMDB API</p>
+                    <p>Built using - React, Tailwind CSS, JavaScript</p>
+                    <p>Movie data provided by Open Movie Database API</p>
                 </div>
             </div>
         </div>

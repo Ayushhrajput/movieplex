@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './style.css'
+import { FavouritesContext } from '../context/FavouriteContext';
 
 function Home(props) {
 
@@ -7,10 +8,13 @@ function Home(props) {
     const [search, setSearch] = useState('')
     const [searchData, setSearchData] = useState([])
     const [showMovie, setShowMovie] = useState(false)
+
+    const {addToFavourites, favourites} = useContext(FavouritesContext)
     
     
-    const apiKey = 'ab383f7bf77b1505d74c59971cedba53'
-    
+    const isFavourite = (id) => (
+        favourites.find((movie) => (movie.imdbID === id))
+    )
     
     const searchMovie = (prop) => {
         setSearch(prop)
@@ -60,7 +64,7 @@ function Home(props) {
                             
                             {
                             searchData.map((movie, index) => (
-                                (<div key={`${movie.OMDBid}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 min-h-60 lg:min-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
+                                (<div key={`${movie.imdbID}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 min-h-60 lg:min-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
                                     {movie.Title}
                                 </p></div>)
                             ))}
@@ -73,10 +77,20 @@ function Home(props) {
                         <div className=' overflow-x-auto flex items-center scrollbar-hide'>
                             <div className='flex gap-2 px-4'>
                             {movies.map((movie, index) => (
-                            (<div key={`${movie.OMDBid}-${index}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
-                                <p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100   font-semibold text-white">
-                                    {movie.Title}
-                                </p>
+                            (<div key={`${movie.imdbID}-${index}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
+                                <div className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100   font-semibold text-white">
+                                    <p>{movie.Title}</p>
+                                    {isFavourite(movie.imdbID)? (
+                                        <p className='bg-red-600 backdrop-blur-4xl w-full text-center p-2 cursor-pointer rounded'>Favourited</p>
+                                    ):(
+                                        <div 
+                                            onClick={() => addToFavourites(movie)}
+                                            className='bg-black/70 backdrop-blur-4xl  w-full p-2 cursor-pointer rounded'>Add to favourites
+                                        </div>
+                                        )
+                                    }
+                                    
+                                </div>
                             </div>)
                             ))}
                             </div>
