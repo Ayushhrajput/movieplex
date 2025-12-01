@@ -7,7 +7,7 @@ function Favourites(props) {
     
     return (
         <div className='w-full'>
-            <div className='h-min bg-gradient-to-b from-black to-black/90 py-20 flex flex-col gap-4'>
+            <div className='min-h-100 bg-gradient-to-b from-black to-black/90 py-20 flex flex-col gap-4'>
                 <h1 className='text-xl text-white px-4'>Your Favourites</h1>
                 {favourites.length == 0? 
                     (<div className='text-gray-400 text-lg px-4'>No favourites yet</div>):
