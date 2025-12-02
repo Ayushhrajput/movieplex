@@ -1,16 +1,52 @@
-# React + Vite
+# MoviePlex - Movie Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A sleek and responsive movie search application built with **React**, **Vite**, **TailwindCSS**, and **React Router**.  
+It uses the **Movie Database API (TMDb)** to fetch movie details and allows users to **add movies to favourites** with a modern UI design.
 
-Currently, two official plugins are available:
+___
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 Search movies by title using Open Movie 
+Database API
+- 📄 View movie details (poster, title)
+- ❤️ Add to favourites and manage your list
+- 🎨 Responsive UI styled with TailwindCSS
+- ⚡ Fast development powered by Vite + React
+- 🛠️ React Hooks for state management
+- 🌐 Routing with React Router
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Technology       | Purpose                          |
+|------------------|----------------------------------|
+| React + Vite     | Frontend framework & bundler     |
+| TailwindCSS      | Styling & responsive design      |
+| React Router     | Navigation & routing             |
+| React Hooks      | State & lifecycle management     |
+| Open Movie Database API         | Movie data fetching              |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
+
+## 📦 Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/AyushhRajput/movie-search-app.git
+cd movie-search-app
+npm install
+```
+## Usage
+
+npm run dev
+
+
+___
+
+## License
+
+This project is licensed under the MIT License.
+
+

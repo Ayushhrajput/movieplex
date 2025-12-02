@@ -9,7 +9,7 @@ function Home(props) {
     const [searchData, setSearchData] = useState([])
     const [showMovie, setShowMovie] = useState(false)
 
-    const {addToFavourites, favourites} = useContext(FavouritesContext)
+    const {addToFavourites, removeFavourites, favourites} = useContext(FavouritesContext)
     
     
     const isFavourite = (id) => (
@@ -62,11 +62,23 @@ function Home(props) {
                         {(showMovie) && (<div className='px-4 text-white text-xl'><span>Search Results</span></div>)}
                         <div className='flex gap-2 px-4 overflow-x-auto scrollbar-hide'>
                             
-                            {
-                            searchData.map((movie, index) => (
-                                (<div key={`${movie.imdbID}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 min-h-60 lg:min-h-80 rounded-lg peer' /><p className="absolute bottom-0 rounded-lg cursor-pointer bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100 font-semibold text-white">
-                                    {movie.Title}
-                                </p></div>)
+                            
+                            {searchData.map((movie) => (
+                            (<div key={`${movie.imdbID}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
+                                <button className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm font-semibold text-white">
+                                    <p>{movie.Title}</p>
+                                    {isFavourite(movie.imdbID)? (
+                                        <p onClick={() => removeFavourites(movie.imdbID)} className='bg-black/70 backdrop-blur-4xl w-full text-center p-2 cursor-pointer rounded'>Remove</p>
+                                    ):(
+                                        <div 
+                                            onClick={() => addToFavourites(movie)}
+                                            className='bg-black/70 backdrop-blur-4xl  w-full text-center p-2 cursor-pointer rounded'>Add to favourites
+                                        </div>
+                                        )
+                                    }
+                                    
+                                </button>
+                            </div>)
                             ))}
                         </div>
                     </div>
@@ -78,14 +90,14 @@ function Home(props) {
                             <div className='flex gap-2 px-4'>
                             {movies.map((movie, index) => (
                             (<div key={`${movie.imdbID}-${index}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
-                                <div className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100   font-semibold text-white">
+                                <div className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm font-semibold text-white">
                                     <p>{movie.Title}</p>
                                     {isFavourite(movie.imdbID)? (
-                                        <p className='bg-red-600 backdrop-blur-4xl w-full text-center p-2 cursor-pointer rounded'>Favourited</p>
+                                        <p onClick={() => removeFavourites(movie.imdbID)} className='bg-black/70 backdrop-blur-4xl w-full text-center p-2 cursor-pointer rounded'>Remove</p>
                                     ):(
                                         <div 
                                             onClick={() => addToFavourites(movie)}
-                                            className='bg-black/70 backdrop-blur-4xl  w-full p-2 cursor-pointer rounded'>Add to favourites
+                                            className='bg-black/70 backdrop-blur-4xl  w-full text-center p-2 cursor-pointer rounded'>Add to favourites
                                         </div>
                                         )
                                     }

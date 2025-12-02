@@ -11,7 +11,7 @@ function Favourites(props) {
                 <h1 className='text-xl text-white px-4'>Your Favourites</h1>
                 {favourites.length == 0? 
                     (<div className='text-gray-400 text-lg px-4'>No favourites yet</div>):
-                    (<div className='flex px-4'>
+                    (<div className='flex px-4 gap-2 overflow-x-auto scrollbar-hide'>
                         {favourites.map((movie) => (
                             <div key={`${movie.imdbID}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
                                 <div className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm opacity-0 hover:opacity-100 peer-hover:opacity-100   font-semibold text-white">

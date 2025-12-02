@@ -40,8 +40,8 @@ function Header({className}) {
                         </ul>
                     </div>
                     <ul className=' w-lg justify-center hidden lg:inline-flex gap-10'>
-                        <NavLink to='/'><li>Movies</li></NavLink>
-                        <NavLink to='/favourites'><li>Favourites</li></NavLink>
+                        <NavLink to='/' className={({isActive}) => isActive? 'border-b border-b-white': 'border-none'}><li>Movies</li></NavLink>
+                        <NavLink to='/favourites' className={({isActive}) => isActive? 'border-b border-b-white': 'border-none'}><li>Favourites</li></NavLink>
                     </ul>
                 </div>
                 <div className='w-lg flex justify-end '>
