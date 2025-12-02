@@ -15,7 +15,7 @@ function Footer(props) {
                     </div>
                     <div>
                         <div className='flex flex-col'>
-                            <a href="https://github.com/Ayushhrajput">Github</a>
+                            <a href="/">Github</a>
                         </div>
                     </div>
                 </div>
