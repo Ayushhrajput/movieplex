@@ -47,7 +47,7 @@ function Home(props) {
                             onSubmit={(e) => {
                                 e.preventDefault()
                                 setShowMovie(search)}}
-                            className='lg:w-2xl overflow-hidden flex rounded'
+                            className='lg:w-2xl w-sm overflow-hidden flex rounded-xl'
                         >
                             <input type="text" className='bg-white text-xl w-full px-2'
                                 value={search}
@@ -65,14 +65,14 @@ function Home(props) {
                             
                             {searchData.map((movie) => (
                             (<div key={`${movie.imdbID}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
-                                <button className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm font-semibold text-white">
+                                <button className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-2 w-full mt-2 text-sm font-semibold text-white">
                                     <p>{movie.Title}</p>
                                     {isFavourite(movie.imdbID)? (
-                                        <p onClick={() => removeFavourites(movie.imdbID)} className='bg-black/70 backdrop-blur-4xl w-full text-center p-2 cursor-pointer rounded'>Remove</p>
+                                        <p onClick={() => removeFavourites(movie.imdbID)} className='bg-black/70 backdrop-blur-4xl border border-gray-900 w-full text-center p-2 cursor-pointer rounded'>Remove</p>
                                     ):(
                                         <div 
                                             onClick={() => addToFavourites(movie)}
-                                            className='bg-black/70 backdrop-blur-4xl  w-full text-center p-2 cursor-pointer rounded'>Add to favourites
+                                            className='bg-black/70 backdrop-blur-4xl border border-gray-900  w-full text-center p-2 cursor-pointer rounded'>Add to favourites
                                         </div>
                                         )
                                     }
@@ -90,14 +90,14 @@ function Home(props) {
                             <div className='flex gap-2 px-4'>
                             {movies.map((movie, index) => (
                             (<div key={`${movie.imdbID}-${index}`} className='relative'><img src={movie.Poster} alt="" className='min-w-40 lg:min-w-60 max-h-60 lg:max-h-80 rounded-lg peer ' />
-                                <div className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-4 w-full mt-2 text-sm font-semibold text-white">
+                                <div className="absolute bottom-0 flex flex-col items-center justify-center rounded-lg cursor-context-menu bg-gradient-to-t from-black to-transparent p-2 w-full mt-2 text-sm font-semibold text-white">
                                     <p>{movie.Title}</p>
                                     {isFavourite(movie.imdbID)? (
-                                        <p onClick={() => removeFavourites(movie.imdbID)} className='bg-black/70 backdrop-blur-4xl w-full text-center p-2 cursor-pointer rounded'>Remove</p>
+                                        <p onClick={() => removeFavourites(movie.imdbID)} className='bg-black/70 backdrop-blur-4xl border border-gray-900 w-full text-center p-2 cursor-pointer rounded'>Remove</p>
                                     ):(
                                         <div 
                                             onClick={() => addToFavourites(movie)}
-                                            className='bg-black/70 backdrop-blur-4xl  w-full text-center p-2 cursor-pointer rounded'>Add to favourites
+                                            className='bg-black/70 backdrop-blur-4xl border border-gray-900  w-full text-center p-2 cursor-pointer rounded'>Add to favourites
                                         </div>
                                         )
                                     }

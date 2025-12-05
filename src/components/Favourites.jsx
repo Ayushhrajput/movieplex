@@ -18,7 +18,7 @@ function Favourites(props) {
                                     <p>{movie.Title}</p>
                                         <div 
                                             onClick={() => removeFavourites(movie.imdbID)}
-                                            className='bg-black/70 backdrop-blur-4xl flex justify-center w-full p-2 cursor-pointer rounded'>Remove
+                                            className='bg-black/70 backdrop-blur-4xl border border-gray-900 flex justify-center w-full p-2 cursor-pointer rounded'>Remove
                                         </div>
                                     
                                     
