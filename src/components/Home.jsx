@@ -47,7 +47,7 @@ function Home(props) {
                             onSubmit={(e) => {
                                 e.preventDefault()
                                 setShowMovie(search)}}
-                            className='lg:w-2xl w-sm overflow-hidden flex rounded-xl'
+                            className='lg:w-2xl max-w-sm px-4 overflow-hidden flex rounded-xl'
                         >
                             <input type="text" className='bg-white text-xl w-full px-2'
                                 value={search}
