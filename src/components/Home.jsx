@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import './style.css'
+
 import { FavouritesContext } from '../context/FavouriteContext';
 
 function Home(props) {
@@ -10,6 +11,9 @@ function Home(props) {
     const [showMovie, setShowMovie] = useState(false)
 
     const {addToFavourites, removeFavourites, favourites} = useContext(FavouritesContext)
+
+    const apiKey = import.meta.env.VITE_API_KEY;
+
     
     
     const isFavourite = (id) => (
@@ -21,14 +25,14 @@ function Home(props) {
     }
 
     useEffect(()=>{
-        fetch('https://www.omdbapi.com/?s=mission impossible&apikey=61c5cb5b')
+        fetch(`https://www.omdbapi.com/?s=mission impossible&apikey=${apiKey}`)
         .then((res) => res.json()).then((data) => {
             setMovies(data.Search)
         })
     },[])
 
     useEffect(() => {
-        fetch(`https://www.omdbapi.com/?s=${search}&apikey=61c5cb5b`)
+        fetch(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`)
         .then((res) => (res.json().then((Data) => {
             setSearchData(Data.Search || [])
         })))
@@ -47,9 +51,9 @@ function Home(props) {
                             onSubmit={(e) => {
                                 e.preventDefault()
                                 setShowMovie(search)}}
-                            className='lg:w-2xl max-w-sm px-4 overflow-hidden flex rounded-xl'
+                            className='lg:w-2xl w-sm px-4 overflow-hidden flex rounded-xl'
                         >
-                            <input type="text" className='bg-white text-xl w-full px-2'
+                            <input type="text" className='bg-white text-xl w-full outline-none px-2'
                                 value={search}
                                 onChange={(e) => {searchMovie(e.target.value)}}
                             placeholder='movie, category' />
