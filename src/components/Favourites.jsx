@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { FavouritesContext } from '../context/FavouriteContext';
 
 function Favourites(props) {
-    const {removeFavourites,addToFavourites, favourites} = useContext(FavouritesContext)
+    const {removeFavourites, favourites} = useContext(FavouritesContext)
     
     
     return (
